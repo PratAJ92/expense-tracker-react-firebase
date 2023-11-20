@@ -30,6 +30,8 @@ export const Main = () => {
     e.preventDefault()
     console.log(`Description: ${description} | TransactionAmount: ${transactionAmount} | TransactionType: ${transactionType}`)
     addTransaction({description, transactionAmount, transactionType})
+    setDescription('')
+    setTransactionAmount('')
   }
 
   const userSignout = async () => {
@@ -61,8 +63,8 @@ export const Main = () => {
       <p>${totalExpense}</p>
 
       <form onSubmit={e => onAddTransaction(e)}>
-        <input type='text' placeholder='Description' onChange={e => setDescription(e.target.value)}/>
-        <input type='text' placeholder='Amount' onChange={e => setTransactionAmount(e.target.value)}/>
+        <input type='text' placeholder='Description' value={description} onChange={e => setDescription(e.target.value)}/>
+        <input type='text' placeholder='Amount' value={transactionAmount} onChange={e => setTransactionAmount(e.target.value)}/>
 
         <label>
           <input type='checkbox' value='expense' checked={transactionType === 'expense'} onChange={e => setTransactionType(e.target.value)}/>
